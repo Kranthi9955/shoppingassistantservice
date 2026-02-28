@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM --platform=$BUILDPLATFORM python:3.14.2-slim@sha256:1a3c6dbfd2173971abba880c3cc2ec4643690901f6ad6742d0827bae6cefc925 AS base
+FROM python:3.14-slim AS base
 
 FROM base AS builder
 
@@ -25,6 +25,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 FROM base
+
 # Enable unbuffered logging
 ENV PYTHONUNBUFFERED=1
 
@@ -38,7 +39,7 @@ COPY --from=builder /usr/local/lib/python3.14/ /usr/local/lib/python3.14/
 COPY . .
 
 # set listen port
-ENV PORT "8080"
+ENV PORT="8080"
 EXPOSE 8080
 
 ENTRYPOINT ["python", "shoppingassistantservice.py"]
