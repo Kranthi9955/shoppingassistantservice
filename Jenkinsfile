@@ -60,10 +60,10 @@ stages {
                         git config user.name "jenkins"
 
                         # Update image tag
-                        sed -i "s|image: .*shippingservice.*|image: ${IMAGE_NAME}|g" deployment.yaml
+                        sed -i "s|image: .*shoppingassistantservice.*|image: ${IMAGE_NAME}|g" deployment.yaml
 
                         git add .
-                        git commit -m "Update shippingservice image to ${IMAGE_NAME}"
+                        git commit -m "Update shoppingassistantservice image to ${IMAGE_NAME}"
                         git push origin main
                     '''
                 }
