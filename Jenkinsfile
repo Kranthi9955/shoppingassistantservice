@@ -26,9 +26,9 @@ stages {
     stage('Login to Docker Hub') {
         steps {
             withCredentials([usernamePassword(
-                credentialsId: 'docker-hub-creds',
-                usernameVariable: 'DOCKER_USERNAME',
-                passwordVariable: 'DOCKER_PASSWORD'
+                //credentialsId: 'docker-hub-creds',
+                usernameVariable: 'sunny557',
+                passwordVariable: 'Goacity$55'
             )]) {
                 sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
             }
